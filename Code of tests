@@ -1,0 +1,37 @@
+import unittest
+import time
+
+class TestInstagramFeatures(unittest.TestCase):
+    
+    @classmethod
+    def setUpClass(cls):
+        print("Configuración inicial para las pruebas de Instagram")
+    
+    def test_suggested_users(self):
+        users = ['user1', 'user2', 'user3']
+        self.assertIsInstance(users, list)
+        self.assertIn('user1', users)
+        self.assertGreater(len(users), 0)
+    
+    def test_recommended_reels(self):
+        reels = ['reel1', 'reel2', 'reel3']
+        self.assertGreater(len(reels), 2)
+        self.assertIn('reel2', reels)
+    
+    def test_post_management(self):
+        post = {'content': 'Hello World!', 'edited': False}
+        self.assertEqual(post['content'], 'Hello World!')
+        post['edited'] = True
+        self.assertTrue(post['edited'])
+    
+    def test_interactions(self):
+        interactions = {'likes': 5, 'comments': ['Great post!', 'Nice!'], 'favorites': 2}
+        self.assertGreater(interactions['likes'], 0)
+        self.assertIn('Great post!', interactions['comments'])
+    
+    @classmethod
+    def tearDownClass(cls):
+        print("Finalización de pruebas de Instagram")
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2, exit=False)
